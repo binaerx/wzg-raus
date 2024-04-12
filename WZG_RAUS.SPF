@@ -276,23 +276,4 @@ M17
 
 
 
-;
-Working on a Sinumerik 840d sl.
 
-Hi, after hours to search the internet (and I found nothing on this...), I finally found out how to loop through an array with an unknown number of elements...  So here's the magic:
-
-N10 DEF INT TAB[10] = (1,2,3,4,5,6,7,8,9,0)
-N20 DEF INT ITERATEUR = 0
-N30 WHILE (ISVAR("TAB["<<ITERATEUR<<"]"))
-N40     MSG(<<TAB[ITERATEUR])
-N50     M0
-N60     ITERATEUR = ITERATEUR+1
-N70 ENDWHILE
-N80 MSG(<<ITERATEUR)
-N90 M0
-N100 M30
-
-
-The trick is with the "ISVAR" command.  It tells you if the variable name is actually a variable...  So we check all array items until we find the first element that doesn't exists!!! :)
-
-So there it is! Enjoy!
