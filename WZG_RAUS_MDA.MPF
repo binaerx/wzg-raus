@@ -1,0 +1,21 @@
+; MSG("Definitionen von Parametern")
+DEF INT _PRG_RAUS, _PRG_DRIN_1, _PRG_DRIN_2, _PRG_DRIN_3, _PRG_DRIN_4
+; ARGUMENT 1: WZG ZUM AUSLAGERN ALS PRG-NUMMER 
+; ARGUMENTE 2-5: WZG ZUM VERBLEIB IN DER MASCHINE ALS PRG-NUMMER
+;
+; MSG("PRG-NR. EINGABE DURCH BEDIENER")
+_PRG_RAUS = 0 ; 0 = ALLE
+_PRG_DRIN_1 = 0
+_PRG_DRIN_2 = 0
+_PRG_DRIN_3 = 0
+_PRG_DRIN_4 = 0
+;
+MSG("Programm Start")
+WZG_RAUS(_PRG_RAUS, _PRG_DRIN_1, _PRG_DRIN_2, _PRG_DRIN_3, _PRG_DRIN_4)
+;
+MSG("Programm Ende")
+G4 F2
+M30
+;
+; HINWEISE:
+; WZG_RAUS.SPF muss im Verzeichnis "Anwenderzyklen" vorhanden und geladen sein.
