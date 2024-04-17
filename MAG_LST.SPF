@@ -1,0 +1,21 @@
+;Gibt Wzg-Bezeichnung, aus dem Magazin und Spindel, in Datei aus.
+DEF INT _I=0, _X=0, _ERROR, _INTERNE_T_NO
+DEF STRING[20] _WZG
+DEF STRING[255] _PFAD="/_N_WKS_DIR/_N_WZG_PROTOKOLLE_WPD/_N_MAG_PROTOKOLL_MPF"
+;
+IF ISFILE(_PFAD)
+  DELETE(_ERROR, _PFAD)
+ENDIF
+;
+FOR _I=1 TO 210 ;PLATZANZAHL MAGAZIN
+  IF ($TC_MPP6[1,_I] > 0) ;MAGAZIN [1, INTERNE PLATZNR.]
+    _WZG = <<$TC_TP2[$TC_MPP6[1,_I]]
+    _X = _X+1
+    WRITE(_ERROR, _PFAD, <<_X<<". "<<_WZG)
+  ENDIF   
+  IF ($TC_MPP6[9998,1] > 0) ;SPINDEL
+  _WZG = <<$TC_TP2[$TC_MPP6[9998,1]]
+  WRITE(_ERROR, _PFAD, <<"Spindel"<<". "<<_WZG)
+  ENDIF
+ENDFOR
+M17
