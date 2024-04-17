@@ -1,5 +1,5 @@
-#Sinumerik 840d
+# Sinumerik 840d
 
-##verwendete Variablen
+## verwendete Variablen
 
-##verwendete In-build Functions
+## verwendete In-build Functions
