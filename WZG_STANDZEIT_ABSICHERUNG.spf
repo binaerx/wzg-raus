@@ -1,0 +1,25 @@
+;WZG_STANDZEIT_ABSICHERUNG
+;
+; I. Fall
+;Abfrage fuer Wzg in Spindel: 
+;Wenn IST-STUECKZAHL groesser ist, als SOLL-STUECKZAHL
+If ($TC_MOP4[$P_TOOLNO,$P_TOOL] > $TC_MOP13[$P_TOOLNO,$P_TOOL])
+  ;WZG in Spindel SPERREN
+  $TC_TP8[$P_TOOLNO,$P_TOOL] = $TC_TP8[$P_TOOLNO,$P_TOOL] B_OR 'B100'
+  M17
+Endif
+;
+; II. Fall
+;Wenn IST-STUECKZAHL gleich 100 ist.
+IF ($TC_MOP4[$P_TOOLNO,$P_TOOL] == 100)
+  ;WENN IST-STUECKZAHL groesser als SOLL-STUECKZAHL
+  IF ($TC_MOP4[$P_TOOLNO,$P_TOOL]) > $TC_MOP13[$P_TOOLNO, $P_TOOL]
+    ;WZG in Spindel SPERREN
+    $TC_TP8[$P_TOOLNO,$P_TOOL] = $TC_TP8[$P_TOOLNO,$P_TOOL] B_OR 'B100'
+    M17
+  Endif
+Endif
+;
+M17
+
+
